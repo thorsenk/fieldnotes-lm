@@ -1,17 +1,10 @@
-[project]
+[tool.poetry]
 name = "open-notebook"
 version = "0.1.2"
 description = "An open source implementation of a research assistant, inspired by Google Notebook LM"
-authors = [
-    {name = "Luis Novo", email = "lfnovo@gmail.com"}
-]
+authors = ["Luis Novo <lfnovo@gmail.com>"]
 readme = "README.md"
-classifiers = [
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.11",
-]
-requires-python = ">=3.11"
+license = "MIT"
 dependencies = [
     "streamlit>=1.39.0",
     "watchdog>=5.0.3",
@@ -51,6 +44,10 @@ dependencies = [
     "sdblpy",
 ]
 
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.setuptools]
 package-dir = {"jota_ai" = "src/open_notebook"}
 
@@ -63,10 +60,6 @@ dev = [
     "types-requests>=2.32.0.20241016",
     "ipywidgets>=8.1.5",
 ]
-
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
 
 [tool.isort]
 profile = "black"

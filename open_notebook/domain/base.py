@@ -139,11 +139,15 @@ class ObjectModel(BaseModel):
                         logger.warning(
                             "No embedding model found. Content will not be searchable."
                         )
-                    data["embedding"] = (
+                    embedding_result = (
                         EMBEDDING_MODEL.embed(embedding_content)
                         if EMBEDDING_MODEL
                         else []
                     )
+                    if isinstance(embedding_result, list):
+                        data["embedding"] = embedding_result
+                    else:
+                        data["embedding"] = []
 
             if self.id is None:
                 data["created"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -158,20 +162,21 @@ class ObjectModel(BaseModel):
                 repo_result = repo_update(self.id, data)
 
             # Update the current instance with the result
-            for key, value in repo_result[0].items():
-                if hasattr(self, key):
-                    if isinstance(getattr(self, key), BaseModel):
-                        setattr(self, key, type(getattr(self, key))(**value))
-                    else:
-                        setattr(self, key, value)
+            if repo_result and isinstance(repo_result, list) and len(repo_result) > 0:
+                result_dict = repo_result[0]
+                if isinstance(result_dict, dict):
+                    for key, value in result_dict.items():
+                        if hasattr(self, key):
+                            if isinstance(getattr(self, key), BaseModel):
+                                setattr(self, key, type(getattr(self, key))(**value))
+                            else:
+                                setattr(self, key, value)
+                else:
+                    logger.warning(f"Unexpected repo_result format: {repo_result}")
 
         except ValidationError as e:
             logger.error(f"Validation failed: {e}")
             raise
-        except Exception as e:
-            logger.error(f"Error saving record: {e}")
-            raise
-
         except Exception as e:
             logger.error(f"Error saving {self.__class__.table_name}: {str(e)}")
             logger.exception(e)
