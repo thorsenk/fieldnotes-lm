@@ -1,4 +1,36 @@
-<a id="readme-top"></a>
+# FieldnotesLM
+
+Your personal AI-powered research assistant and note-taking tool. This project is an independent implementation inspired by the open-notebook project, customized for your specific needs.
+
+## Features
+
+- Multi-Notebook Support for organizing research
+- Multi-model support (Gemini, OpenAI, Anthropic, Vertex AI, Open Router, Ollama)
+- Podcast Generation from notes
+- Broad Content Integration (links, PDFs, EPUB, Office files, YouTube, audio/video)
+- AI-Powered Notes
+- Integrated Search Engines
+- Fine-Grained Context Management
+
+## Getting Started
+
+1. Clone this repository
+2. Set up your environment variables in `.env` or `docker.env`
+3. Run using either Docker or local installation
+
+### Docker Setup (Recommended)
+
+```bash
+docker compose --profile multi up
+```
+
+### Local Setup
+
+```bash
+poetry install
+docker compose --profile db_only up
+poetry run streamlit run app_home.py
+```
 
 <!-- [![Contributors][contributors-shield]][contributors-url] -->
 [![Forks][forks-shield]][forks-url]
@@ -41,7 +73,7 @@
 > - Discussions
 > - Pull Requests
 >
-> Together, we can make it even better! 
+> Together, we can make it even better!
 
 
 <!-- TABLE OF CONTENTS -->
@@ -104,8 +136,8 @@ Learn more about our project at [https://www.open-notebook.ai](https://www.open-
 
 Go to the [Setup Guide](docs/SETUP.md) to learn how to set up the tool in details.
 
-You don't need to clone this repo if you just want to use the app without building from source! 
-Take a look at the [Open Notebook Boilerplate](https://github.com/lfnovo/open-notebook-boilerplate) repo with a sample of how to set it up for maximum feature usability. 
+You don't need to clone this repo if you just want to use the app without building from source!
+Take a look at the [Open Notebook Boilerplate](https://github.com/lfnovo/open-notebook-boilerplate) repo with a sample of how to set it up for maximum feature usability.
 
 ### Running from source
 
@@ -195,9 +227,9 @@ You can now process audio and video files, extracting transcripts and insights f
 
 ### v0.0.4 - Podcasts  🎙️
 
-You can now build amazing custom podcasts based on your own data. Customize your speakers, episode structure, cadence, voices, etc. 
+You can now build amazing custom podcasts based on your own data. Customize your speakers, episode structure, cadence, voices, etc.
 
-Check out a sample using my own voice created on Eleven Labs and a interview format. 
+Check out a sample using my own voice created on Eleven Labs and a interview format.
 
 [![Check out our podcast sample](https://img.youtube.com/vi/D-760MlGwaI/0.jpg)](https://www.youtube.com/watch?v=D-760MlGwaI)
 
@@ -257,7 +289,7 @@ Jinja based prompts that are easy to customize to your own preferences.
 - [ ] **Bookmark Integration**: Integrate with your favorite bookmarking app.
 - ✅ **Multi-model support**: Open AI, Anthropic, Vertex AI, Open Router, Ollama, etc.
 - ✅ **Insight Generation**: New tools for creating insights - [transformations](docs/TRANSFORMATIONS.md)
-- ✅ **Podcast Generator**: Automatically convert your notes into a podcast format. 
+- ✅ **Podcast Generator**: Automatically convert your notes into a podcast format.
 - ✅ **Multiple Chat Sessions**: Juggle different discussions within the same notebook.
 - ✅ **Enhanced Citations**: Improved layout and finer control for citations.
 - ✅ **Better Embeddings & Summarization**: Smarter ways to distill information.
@@ -274,7 +306,7 @@ See the [open issues](https://github.com/lfnovo/open-notebook/issues) for a full
 We would love your contributions! Specifically, we're looking for help with:
 - **Front-End Development**: Improve the UI/UX by moving beyond Streamlit.
 - **Testing & Bug Fixes**: Help make Open Notebook more robust.
-- **Feature Development**: Let’s make the coolest note-taking tool together!
+- **Feature Development**: Let's make the coolest note-taking tool together!
 
 See more at [CONTRIBUTING](CONTRIBUTING.md)
 

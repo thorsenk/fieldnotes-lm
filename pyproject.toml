@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "open-notebook"
-version = "0.1.2"
-description = "An open source implementation of a research assistant, inspired by Google Notebook LM"
-authors = ["Luis Novo <lfnovo@gmail.com>"]
+name = "fieldnotes-lm"
+version = "0.1.0"
+description = "Your personal AI-powered research assistant and note-taking tool"
+authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
 license = "MIT"
 dependencies = [
