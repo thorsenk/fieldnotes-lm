@@ -12,6 +12,9 @@ authors = [
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.9,<3.10"
+packages = [
+    {include = "open_notebook", from = "src"}
+]
 
 [tool.poetry]
 name = "fieldnotes-lm"
@@ -21,6 +24,9 @@ authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
 license = "MIT"
 python = ">=3.9,<3.10"
+packages = [
+    {include = "open_notebook", from = "src"}
+]
 dependencies = [
     "streamlit>=1.32.0",
     "watchdog>=3.0.0",
