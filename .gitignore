@@ -6,6 +6,14 @@ data/
 sqlite-db/
 surreal-data/
 docker.env
+notebook_data/
+**/notebook_data/
+**/surreal_data/
+**/.env*
+**/*.key
+**/*.pem
+**/*.crt
+**/*.secret
 # Python-specific
 *.py[cod]
 __pycache__/
