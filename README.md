@@ -2,6 +2,14 @@
 
 Your personal AI-powered research assistant and note-taking tool. This project is an independent implementation inspired by the open-notebook project, customized for your specific needs.
 
+## Requirements
+
+- Python 3.9 (Currently using this version for maximum stability and compatibility)
+- Docker (for database and optional containerized deployment)
+- Poetry (for dependency management)
+
+> **Note on Python Version**: This project currently uses Python 3.9 to ensure stability and compatibility with all dependencies. Future upgrades to newer Python versions will be implemented once the ecosystem fully supports it.
+
 ## Features
 
 - Multi-Notebook Support for organizing research
