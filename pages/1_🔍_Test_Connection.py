@@ -3,9 +3,10 @@ import google.generativeai as genai
 from pymongo import MongoClient
 import datetime
 
-st.title("Connection Test")
+st.title("🔍 Connection Test")
 
 # Test MongoDB Connection
+st.subheader("MongoDB Connection Test")
 try:
     client = MongoClient(st.secrets["MONGODB_URI"])
     db = client[st.secrets["MONGODB_DATABASE"]]
@@ -21,28 +22,36 @@ try:
 
     if found:
         st.success("✅ MongoDB Connection Successful!")
+        st.json({
+            "database": st.secrets["MONGODB_DATABASE"],
+            "collection": "test_collection",
+            "document": {"test": found["test"], "timestamp": found["timestamp"]}
+        })
         # Clean up test document
         test_collection.delete_one({"_id": result.inserted_id})
 except Exception as e:
     st.error(f"❌ MongoDB Connection Failed: {str(e)}")
+    st.info("Check your MongoDB connection string and database name in Streamlit secrets.")
 
 # Test Gemini Connection
+st.subheader("Gemini API Connection Test")
 try:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
     model = genai.GenerativeModel('gemini-pro')
-    response = model.generate_content("Hello!")
+    response = model.generate_content("Say hello!")
 
     if response:
         st.success("✅ Gemini API Connection Successful!")
+        st.write("Test Response:", response.text)
 except Exception as e:
     st.error(f"❌ Gemini API Connection Failed: {str(e)}")
+    st.info("Check your Gemini API key in Streamlit secrets.")
 
-# Show current configuration
+# Show Configuration
 st.subheader("Current Configuration")
-st.json({
+config = {
     "mongodb_database": st.secrets["MONGODB_DATABASE"],
     "mongodb_connected": "Yes" if "client" in locals() else "No",
-    "gemini_connected": "Yes" if "model" in locals() else "No",
-    "model_language": st.secrets.get("MODEL_LANGUAGE", "gemini-1.5-pro"),
-    "model_embedding": st.secrets.get("MODEL_EMBEDDING", "models/embedding-001")
-})
+    "gemini_connected": "Yes" if "model" in locals() else "No"
+}
+st.json(config)

@@ -12,11 +12,15 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Import app components
-from open_notebook.app_home import setup_page
+# Main page content
+st.title("📒 Fieldnotes LM")
+st.write("Welcome to Fieldnotes LM - Your AI-powered research assistant!")
 
-# Set up the main page
-setup_page("📒 Fieldnotes LM", sidebar_state="expanded")
+# Add sidebar
+with st.sidebar:
+    st.title("Navigation")
+    st.page_link("pages/1_🔍_Test_Connection.py", label="Test Connections")
+    st.page_link("pages/2_📒_Notebooks.py", label="Notebooks")
 
 # Main app logic
 if "object_id" not in st.query_params:
